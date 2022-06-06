@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nft Generator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #nft {
+            position: relative;
+            width: 550px;
+            height: 405px;
+            background-image: url("images/skins/adidas.jpg");
+            background-position: center;
+            background-size: cover;
+        }
+        #img {
+    position: absolute;
+    width: 240px;
+    height: 200px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    margin: 98px 0px 0 212px;
+        }
+    </style>
+</head>
+<body>
+    <div id="nft">
+        <img src="images/moustache/nftmoustache.png" id="img">
+    </div>
+    <br>
+    <button id="new">Generate new nft</button>
+    <script>
+        let btn = document.getElementById("new");
+        let img = document.getElementById("img");
+        let nft = document.getElementById("nft");
+        let nfts = ["adidas.jpg", "bluey.webp", "bored.jpg", "captain.jpg", "cheetah.png", "cinema.png", "golden.png", "hat.png", "horn.png", "king.jpg", "laser.png", "metal.png", "pizza.jpg", "terminator.png", "yello.webp"]
+        let moustaches = ["nftmoustache.png", "cryptostache.png", ""];
+        btn.addEventListener("click", function(){
+            c = getRandom();
+            nft.style.backgroundImage = "url('images/skins/" + c[0] + "')";
+            if(c[1] == ""){
+                console.log("1")
+                img.style.display = "none"
+            } else if(c[1] == "nftmoustache.png"){
+                console.log("n")
+                img.style.display = "block";
+                img.style.margin = "98px 0px 0 212px";
+                img.style.width = "240px";
+                img.style.height = "200px";
+            } else if(c[1] == "cryptostache.png"){
+                console.log("c")
+                img.style.display = "block";
+                img.style.margin = "10px 0 0px 200px";
+                img.style.width = "100px";
+                img.style.height = "100px";
+            }
+            img.src = "images/moustache/" + c[1];
+        })
+        //98px 0px 0 212px h200px w240px
+        //10px 0 0px 200px h100px w100px
+        function getRandom(){
+            randN = Math.floor(Math.random() * nfts.length);
+            randM = Math.floor(Math.random() * moustaches.length);
+            return [nfts[randN], moustaches[randM]];
+        }
+    </script>
+</body>
+</html>
